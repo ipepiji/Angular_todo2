@@ -1,1 +1,18 @@
-<p>todos works!</p>
+<div *ngIf="todos">
+    <ul *ngFor="let todo of todos | async">
+        <input type="checkbox" [checked]="todo.isCompleted" (change)="toggleCompleted(todo.id)">
+        &nbsp;
+        <span [style.textDecoration]="todo.isCompleted? 'line-through' : 'none'">{{ todo.title }}</span>
+        <span style="float: 'right'">
+            <b>{{formattedDate(todo.dateCreated)}}</b>
+            &nbsp;&nbsp;
+            <button class="btn btn-danger round" (click)="deleteTodo(todo.id)">
+                X
+            </button>
+        </span>
+    </ul>
+</div>
+
+<div *ngIf="(todos | async)?.length === 0">
+    <h3 style="text-align: center;">Nothing to show...</h3>
+</div>
