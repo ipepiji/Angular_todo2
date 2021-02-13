@@ -2,7 +2,7 @@
     <ul *ngFor="let todo of todos | async">
         <input type="checkbox" [checked]="todo.isCompleted" (change)="toggleCompleted(todo.id)">
         &nbsp;
-        <span [style.textDecoration]="todo.isCompleted? 'line-through' : 'none'">{{ todo.title }}</span>
+        <span [style.textDecoration]="todo.isCompleted? 'line-through' : 'none'">{{todo.title}}</span>
         <span style="float: 'right'">
             <b>{{formattedDate(todo.dateCreated)}}</b>
             &nbsp;&nbsp;

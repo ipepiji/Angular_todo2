@@ -69,9 +69,11 @@ export function todosReducer(state: Todo[] = initialState, action: any) {
                             alert("Same task!");
                         }
                     }
-                    else {
-                        todo.isCompleted = !todo.isCompleted
-                    }
+                    else
+                        todo = {
+                            ...todo,
+                            isCompleted: !todo.isCompleted
+                        }
                 }
 
                 return todo;
