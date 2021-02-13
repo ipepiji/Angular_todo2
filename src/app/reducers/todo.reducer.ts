@@ -13,13 +13,13 @@ const initialState: Todo[] = [
         id: uuid(),
         title: "Sort the task by date and reverse - create a button which will change the sort by date order",
         dateCreated: 1610719200,
-        isCompleted: false
+        isCompleted: true
     },
     {
         id: uuid(),
         title: "Show total task on bottom left: if 2 complete, and 3 items left, show: '3/5 items left'",
         dateCreated: 1610460000,
-        isCompleted: false
+        isCompleted: true
     },
     {
         id: uuid(),
@@ -32,7 +32,7 @@ const initialState: Todo[] = [
 export function todosReducer(state: Todo[] = initialState, action: any) {
     switch (action.type) {
         case TodoActions.ADD_TODO: {
-            if (!state.filter((todo: Todo) => todo.title.toLowerCase().trim() === action.payload.toLowerCase().trim()).length) {
+            if (!state.filter((todo: Todo) => todo.title.toLowerCase() === action.payload.toLowerCase()).length) {
                 const newItem = {
                     id: uuid(),
                     title: action.payload,
@@ -40,17 +40,15 @@ export function todosReducer(state: Todo[] = initialState, action: any) {
                     isCompleted: false
                 };
 
-                const newArr = [
+                state = [
                     ...state,
                     newItem
                 ];
-
-                return newArr;
             }
-            else {
+            else
                 alert("Task already exist!");
-                return state;
-            }
+
+            return state;
         }
 
         case TodoActions.DELETE_TODO: {
@@ -63,10 +61,16 @@ export function todosReducer(state: Todo[] = initialState, action: any) {
             const updatedState: Todo[] = state.map((todo: Todo) => {
                 if (todo.id === action.payload.id) {
                     if (action.payload.hasOwnProperty('title')) {
-                        if (!state.filter((todo) => todo.title.toLowerCase().trim() === action.payload.toLowerCase().trim()).length)
-                            todo.title = action.payload.title;
+                        if (!state.filter((todo: Todo) => todo.title.toLowerCase() === action.payload.title.toLowerCase()).length) {
+                            {
+                                todo = {
+                                    ...todo,
+                                    title: action.payload.title
+                                }
+                            }
+                        }
                         else {
-                            alert("Same task!");
+                            alert("Same task | Task exist");
                         }
                     }
                     else

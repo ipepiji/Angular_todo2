@@ -1,4 +1,4 @@
 <div>
-    <i><b>{{completedItems}} / {{(todos | async)?.length}}</b> items left...</i>
-    <button class="btn btn-info float-right">Sort Date</button>
+    <i><b>{{completedItems}} / {{(todos | async)?.length}}</b> items completed...</i>
+    <button class="btn btn-info float-right" (click)="toggleDate()">Sort Date</button>
 </div>

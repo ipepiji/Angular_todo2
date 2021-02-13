@@ -1,10 +1,8 @@
-<form>
+<form [formGroup]="newTodoForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <div class="form-group">
-            <div class="input-group mb-3">
-                <input type="text" name="item" class="form-control" placeholder="New item">
-                <button type="submit" class="input-group-append btn btn-success">+</button>
-            </div>
+        <div class="input-group mb-3">
+            <input type="text" formControlName="title" class="form-control" placeholder="New item">
+            <button type="submit" class="input-group-append btn btn-success">+</button>
         </div>
     </div>
 </form>
