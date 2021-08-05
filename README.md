@@ -30,13 +30,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 https://blog.angular-university.io/rxjs-higher-order-mapping/
 
 These both output all values, the difference is the ordering.
-{
 1. mergeMap = creates an Observable immediately for any source item (Show late result from all previous Observables, overlapping)
 2. concatMap - waits for the previous Observable to complete before creating the next one (Show in order, not overlapping)
-}
 
 These both throttle the output.
-{
 3. switchMap = for any source item, completes the previous Observable and immediately creates the next one (Not show late result from all previous Observables, skip late result)
 4. exhaustMap - source items are ignored while the previous Observable is not completed (Wait first observable first, then can proceed to next, if 2nd emit during first observable, it will be ignored, which be proceed to third after first done, skip latter observable if too fast)
-}
