@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## RXJS
 https://blog.angular-university.io/rxjs-higher-order-mapping/
-https://github.com/ipepiji/Angular_todo2/edit/main/README.md
+https://luukgruijs.medium.com/understanding-rxjs-map-mergemap-switchmap-and-concatmap-833fc1fb09ff
 
 1. mergeMap = creates an Observable immediately for any source item (Show late result from all previous Observables, overlapping)
 3. concatMap = waits for the previous Observable to complete before creating the next one (Show in order, not overlapping)
